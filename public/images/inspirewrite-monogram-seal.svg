@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280" width="240" height="280" role="img" aria-label="InspireWrite IW monogram seal">
+  <title>The IW Monogram Seal — sanctuary arch / bookmark</title>
+  <!-- Thin pill-shaped vertical arch: sanctuary window and bookmark -->
+  <path d="M 40 240 L 40 120 A 80 80 0 0 1 200 120 L 200 240 Z" fill="none" stroke="#18181B" stroke-width="2.5"/>
+  <g transform="translate(20,40)">
+    <polygon points="100,8 112,20 100,32 88,20" fill="#C59B27"/>
+    <polyline points="92,122 92,64 100,40 108,64 108,122" fill="none" stroke="#18181B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100" y1="64" x2="100" y2="98" stroke="#18181B" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="100" cy="102" r="3" fill="#18181B"/>
+    <polyline points="28,100 52,156 100,112 148,156 172,100" fill="none" stroke="#18181B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

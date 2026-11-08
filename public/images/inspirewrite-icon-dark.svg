@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 176" width="200" height="176" role="img" aria-label="InspireWrite Illuminated Spine icon, Sanctuary Night">
+  <title>The Illuminated Spine — InspireWrite (Sanctuary Night)</title>
+  <polygon points="100,8 112,20 100,32 88,20" fill="#C59B27"/>
+  <polyline points="92,122 92,64 100,40 108,64 108,122" fill="none" stroke="#F4F1EA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="100" y1="64" x2="100" y2="98" stroke="#F4F1EA" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="100" cy="102" r="3" fill="#F4F1EA"/>
+  <polyline points="28,100 52,156 100,112 148,156 172,100" fill="none" stroke="#F4F1EA" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

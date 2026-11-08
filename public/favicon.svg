@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="InspireWrite micro-mark">
+  <title>InspireWrite micro-mark — nib and lamp spark</title>
+  <!-- Cropped to the I + spark only, strokes thickened for 16px legibility -->
+  <polygon points="32,3 40,11 32,19 24,11" fill="#C59B27"/>
+  <polyline points="26,56 26,32 32,21 38,32 38,56" fill="none" stroke="#18181B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="32" y1="32" x2="32" y2="46" stroke="#18181B" stroke-width="3" stroke-linecap="round"/>
+</svg>

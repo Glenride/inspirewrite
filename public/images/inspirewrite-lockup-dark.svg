@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 200" width="920" height="200" role="img" aria-label="INSPIREWRITE. by Glenride, Sanctuary Night">
+  <title>INSPIREWRITE. — Full horizontal lockup, Sanctuary Night</title>
+  <g transform="translate(8,18) scale(0.92)">
+    <polygon points="100,8 112,20 100,32 88,20" fill="#C59B27"/>
+    <polyline points="92,122 92,64 100,40 108,64 108,122" fill="none" stroke="#F4F1EA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100" y1="64" x2="100" y2="98" stroke="#F4F1EA" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="100" cy="102" r="3" fill="#F4F1EA"/>
+    <polyline points="28,100 52,156 100,112 148,156 172,100" fill="none" stroke="#F4F1EA" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="200" y="108" font-family="Cormorant Garamond, Playfair Display, Instrument Serif, Georgia, serif" font-size="72" font-weight="600" letter-spacing="6" fill="#F4F1EA">INSPIREWRITE<tspan fill="#C59B27" font-size="88">.</tspan></text>
+  <text x="204" y="148" font-family="Inter, Plus Jakarta Sans, Arial, sans-serif" font-size="25" font-weight="500" letter-spacing="5" fill="#F4F1EA">BY GLENRIDE</text>
+</svg>
