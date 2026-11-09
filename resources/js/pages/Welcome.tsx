@@ -2,15 +2,8 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import { SharedData } from '@/types';
 import { FlashToaster } from '@/components/flash-toaster';
 import { SiteFooter } from '@/components/site-footer';
-import { BookOpen, Sparkles, Users, ChevronRight, ChevronLeft, Quote, ArrowRight, Menu, X } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Quote, ArrowRight, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
-interface Book {
-    id: number;
-    name: string;
-    abbreviation: string;
-    position: number;
-}
 
 const heroVerses = [
     { text: 'Thy word is a lamp unto my feet, and a light unto my path.', ref: 'Psalm 119:105' },
@@ -21,7 +14,15 @@ const heroVerses = [
     { text: 'The grass withereth, the flower fadeth: but the word of our God shall stand for ever.', ref: 'Isaiah 40:8' },
 ];
 
-export default function Welcome({ oldTestament = [], newTestament = [] }: { oldTestament?: Book[], newTestament?: Book[] }) {
+// One fact per line — the detail lives behind each link.
+const facts = [
+    { title: '66 books', desc: 'the whole Bible in distraction-free Easy Read mode.', href: '/bible/gn/1' },
+    { title: 'S.C.R.I.P.T. method', desc: 'denomination-neutral reading and reflection.', href: '/guides/how-to-read-the-bible' },
+    { title: 'Journaling', desc: 'capture your insights, prayers, and reflections.', href: '/resources/journaling-prompts-for-spiritual-growth' },
+    { title: 'The Assistant', desc: 'turn study into lessons and sermons.', href: '/pricing' },
+];
+
+export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [verseIndex, setVerseIndex] = useState(0);
@@ -38,27 +39,6 @@ export default function Welcome({ oldTestament = [], newTestament = [] }: { oldT
         }, 7000);
         return () => clearInterval(timer);
     }, [versePaused, verseIndex]);
-
-    const features = [
-        { title: 'Scripture Reading', desc: 'Immerse yourself in the Word with a distraction-free reading experience' },
-        { title: 'S.C.R.I.P.T. Method', desc: 'Follow our denomination-neutral six-step flow for deeper reading and reflection' },
-        { title: 'Personal Journaling', desc: 'Capture your spiritual insights, prayers, and reflections' },
-        { title: 'The Assistant', desc: 'Transform your study into structured lessons with the Assistant' },
-        { title: 'Sermon Builder', desc: "Craft meaningful sermons with the Assistant's help" },
-    ];
-
-    const stats = [
-        { value: '3+', label: 'Years in Development' },
-        { value: '66', label: 'Books of Scripture' },
-        { value: '1K+', label: 'Verses to Explore' },
-        { value: '∞', label: 'Spiritual Growth' },
-    ];
-
-    const testimonials = [
-        { quote: 'InspireWrite has transformed how I study and reflect on Scripture. The journaling features are incredible.', author: 'Sarah M.', role: 'Bible Study Leader' },
-        { quote: 'Finally, a platform that combines reading, studying, and writing in one beautiful experience.', author: 'Pastor David', role: 'Church Pastor' },
-        { quote: 'The Assistant saves me hours of preparation time each week.', author: 'Michelle K.', role: 'Sunday School Teacher' },
-    ];
 
     return (
         <div className="min-h-screen bg-[#F5F2EA] text-[#1a1a1a]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
@@ -83,7 +63,7 @@ export default function Welcome({ oldTestament = [], newTestament = [] }: { oldT
                             "price": "0",
                             "priceCurrency": "USD"
                         },
-                        "description": "InspireWrite by Glenride - the Bible reading and spiritual journaling companion for modern believers. Features include complete Bible access, the denomination-neutral S.C.R.I.P.T. reading method, verse highlighting, bookmarks, notes, sermon building with the Assistant, and spiritual journaling.",
+                        "description": "InspireWrite by Glenride - the Bible reading and spiritual journaling companion for modern believers. Features include complete Bible access, the denomination-neutral S.C.R.I.P.T. method, verse highlighting, bookmarks, notes, sermon building with the Assistant, and spiritual journaling.",
                         "featureList": [
                             "Complete Bible Access with 66 books",
                             "Distraction-free Easy Read mode",
@@ -187,7 +167,7 @@ export default function Welcome({ oldTestament = [], newTestament = [] }: { oldT
                             The Bible reading and spiritual journaling companion for modern believers.
                         </p>
                         <p className="motion-reveal reveal-delay-3 text-lg text-gray-600 mb-8 max-w-md leading-relaxed">
-                            Read all 66 books in distraction-free Easy Read mode and follow the S.C.R.I.P.T. method for denomination-neutral reflection. Highlight verses, capture insights, and build lessons and sermons with the Assistant.
+                            Free to start — read all 66 books in distraction-free Easy Read mode.
                         </p>
                         <div className="motion-reveal reveal-delay-4 flex flex-wrap gap-4">
                             <Link
@@ -265,156 +245,42 @@ export default function Welcome({ oldTestament = [], newTestament = [] }: { oldT
                 </div>
             </section>
 
-            {/* Features Section */}
-            <section id="features" className="py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="motion-reveal flex items-center gap-4 mb-16">
-                        <h2 className="text-4xl font-bold uppercase tracking-wider" style={{ fontFamily: 'Cormorant Garamond, DM Serif Display, serif' }}>
-                            FEATURES.
-                        </h2>
-                        <div className="h-px bg-black/20 flex-1" />
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {features.map((feature, i) => (
-                            <div key={feature.title} className={`motion-reveal reveal-delay-${(i % 5) + 1} group p-8 border border-gray-100 hover:border-yellow-500 hover:shadow-lg transition-all duration-300 bg-[#FDFBF7]`}>
-                                <h3 className="text-lg font-bold uppercase tracking-wider mb-3 text-gray-900 group-hover:text-yellow-600 transition-colors">{feature.title}</h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
-                            </div>
+            {/* Key facts — one line each; the detail lives behind the link */}
+            <section id="features" className="py-16 bg-white">
+                <div className="max-w-4xl mx-auto px-6">
+                    <ul className="divide-y divide-black/10">
+                        {facts.map((fact, i) => (
+                            <li key={fact.title} className={`motion-reveal reveal-delay-${(i % 4) + 1}`}>
+                                <Link href={fact.href} className="group flex items-baseline gap-3 py-5">
+                                    <span className="text-lg font-bold uppercase tracking-wider group-hover:text-yellow-600 transition-colors">{fact.title}</span>
+                                    <span className="text-gray-600">{fact.desc}</span>
+                                    <ChevronRight size={16} className="ml-auto shrink-0 text-gray-400 group-hover:text-yellow-600 group-hover:translate-x-1 transition-all" />
+                                </Link>
+                            </li>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* About Section */}
-            <section className="py-24 bg-[#1a1a1a] text-white">
-                <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-                    <div className="motion-reveal">
-                        <div className="flex items-center gap-4 mb-8">
-                            <h2 className="text-4xl font-bold uppercase tracking-wider" style={{ fontFamily: 'Cormorant Garamond, DM Serif Display, serif' }}>
-                                ABOUT US.
-                            </h2>
-                            <div className="h-px bg-white/20 flex-1" />
-                        </div>
-                        <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                            InspireWrite by Glenride is a spiritual writing platform designed for those who want to deepen their relationship with scripture through thoughtful journaling and creative expression.
-                        </p>
-                        <p className="text-gray-300 leading-relaxed mb-8">
-                            We combine the timeless wisdom of the Bible with thoughtful modern tools to help you create lessons, build sermons with the Assistant, and capture your spiritual insights in meaningful ways.
-                        </p>
-                        <Link href="/about" className="inline-flex items-center gap-2 text-yellow-500 uppercase tracking-widest text-sm hover:text-yellow-400 transition-colors group">
-                            Learn More <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                        {stats.map((stat, i) => (
-                            <div key={i} className={`motion-reveal reveal-delay-${(i % 5) + 1} p-8 border border-white/10 text-center hover:border-yellow-500/50 transition-colors`}>
-                                <div className="text-5xl font-bold text-yellow-500 mb-2" style={{ fontFamily: 'Cormorant Garamond, DM Serif Display, serif' }}>{stat.value}</div>
-                                <div className="text-xs uppercase tracking-widest text-gray-400">{stat.label}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Scripture Index Section */}
-            <section className="py-24 bg-[#F5F2EA]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex items-center gap-4 mb-16">
-                        <h2 className="text-4xl font-bold uppercase tracking-wider" style={{ fontFamily: 'Cormorant Garamond, DM Serif Display, serif' }}>
-                            SCRIPTURE.
-                        </h2>
-                        <div className="h-px bg-black/20 flex-1" />
-                    </div>
-
-                    {/* Old Testament */}
-                    {oldTestament.length > 0 && (
-                        <div className="mb-16">
-                            <h3 className="text-sm uppercase tracking-[0.3em] text-yellow-600 mb-6 font-medium">Old Testament</h3>
-                            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-3">
-                                {oldTestament.map((book) => (
-                                    <Link
-                                        key={book.id}
-                                        href={`/bible/${book.abbreviation}/1`}
-                                        className="p-3 bg-white border border-gray-100 text-center text-sm hover:border-yellow-500 hover:shadow-md transition-all group"
-                                    >
-                                        <span className="group-hover:text-yellow-600 transition-colors">{book.name}</span>
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* New Testament */}
-                    {newTestament.length > 0 && (
-                        <div>
-                            <h3 className="text-sm uppercase tracking-[0.3em] text-yellow-600 mb-6 font-medium">New Testament</h3>
-                            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-3">
-                                {newTestament.map((book) => (
-                                    <Link
-                                        key={book.id}
-                                        href={`/bible/${book.abbreviation}/1`}
-                                        className="p-3 bg-white border border-gray-100 text-center text-sm hover:border-yellow-500 hover:shadow-md transition-all group"
-                                    >
-                                        <span className="group-hover:text-yellow-600 transition-colors">{book.name}</span>
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </section>
-
-            {/* Testimonials Section */}
-            <section className="py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="motion-reveal flex items-center gap-4 mb-16">
-                        <h2 className="text-4xl font-bold uppercase tracking-wider" style={{ fontFamily: 'Cormorant Garamond, DM Serif Display, serif' }}>
-                            REVIEWS.
-                        </h2>
-                        <div className="h-px bg-black/20 flex-1" />
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {testimonials.map((testimonial, i) => (
-                            <div key={i} className={`motion-reveal reveal-delay-${(i % 5) + 1} p-8 bg-[#F5F2EA] border border-gray-100 hover:shadow-lg transition-shadow`}>
-                                <Quote className="text-yellow-500/30 mb-4" size={40} />
-                                <p className="text-gray-700 mb-6 italic leading-relaxed" style={{ fontFamily: 'Cormorant Garamond, DM Serif Display, serif' }}>
-                                    "{testimonial.quote}"
-                                </p>
-                                <div>
-                                    <p className="font-bold uppercase tracking-wider text-sm">{testimonial.author}</p>
-                                    <p className="text-gray-500 text-xs uppercase tracking-wider">{testimonial.role}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="py-24 bg-[#1a1a1a] text-white">
-                <div className="motion-reveal max-w-4xl mx-auto px-6 text-center">
-                    <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Cormorant Garamond, DM Serif Display, serif' }}>
-                        START YOUR JOURNEY.
-                    </h2>
-                    <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                        Ready to deepen your relationship with scripture? Join InspireWrite today to read, journal, and reflect.
+                    </ul>
+                    <p className="motion-reveal mt-10 text-center text-gray-600">
+                        No ads — just you and God&apos;s Word. <Link href="/pricing" className="text-yellow-600 hover:text-yellow-500 underline underline-offset-4">Free to start, Study $7/mo, Pro $27/mo.</Link>
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link
-                            href="/register"
-                            className="btn-lift inline-flex items-center justify-center gap-2 bg-yellow-500 text-[#1a1a1a] px-10 py-4 text-sm uppercase tracking-widest hover:bg-yellow-400 transition-colors font-semibold"
-                        >
-                            Create Account
-                        </Link>
-                        <Link
-                            href="/pricing"
-                            className="btn-lift inline-flex items-center justify-center gap-2 border-2 border-white/80 text-white px-10 py-4 text-sm uppercase tracking-widest hover:bg-white hover:text-[#1a1a1a] transition-colors font-medium"
-                        >
-                            View Pricing
-                        </Link>
-                    </div>
+                </div>
+            </section>
+
+            {/* Journey — where to go next */}
+            <section className="py-12 bg-[#F5F2EA]">
+                <div className="max-w-4xl mx-auto px-6">
+                    <nav className="motion-reveal flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm uppercase tracking-widest">
+                        <Link href="/guides/how-to-read-the-bible" className="hover:text-yellow-600 transition-colors">How to Read the Bible</Link>
+                        <span className="text-yellow-600" aria-hidden="true">·</span>
+                        <Link href="/guides/how-to-pray-when-you-feel-stuck" className="hover:text-yellow-600 transition-colors">How to Pray</Link>
+                        <span className="text-yellow-600" aria-hidden="true">·</span>
+                        <Link href="/resources/best-bible-reading-plans" className="hover:text-yellow-600 transition-colors">Reading Plans</Link>
+                        <span className="text-yellow-600" aria-hidden="true">·</span>
+                        <Link href="/resources/journaling-prompts-for-spiritual-growth" className="hover:text-yellow-600 transition-colors">Journaling Prompts</Link>
+                        <span className="text-yellow-600" aria-hidden="true">·</span>
+                        <Link href="/pricing" className="hover:text-yellow-600 transition-colors">Pricing</Link>
+                        <span className="text-yellow-600" aria-hidden="true">·</span>
+                        <Link href="/about" className="hover:text-yellow-600 transition-colors">About</Link>
+                    </nav>
                 </div>
             </section>
 
